@@ -10,13 +10,7 @@ Check out the live demo of the Trillo website [here](https://ella0110.github.io/
 
 - Responsive layout with Tailwind CSS
 - Reusable React components
-- Modern design with CSS Grid & Flexbox
-
-## Technologies
-
-- **Next.js**: Framework for server-rendered React apps.
-- **React**: JavaScript library for building user interfaces.
-- **Tailwind CSS**: Utility-first CSS framework.
+- Modern design with Flexbox
 
 ## Getting Started
 
