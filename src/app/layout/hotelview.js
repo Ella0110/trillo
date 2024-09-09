@@ -96,7 +96,7 @@ export default function HotelView() {
                     reviewName = "Nick Smith"
                     reviewDate = "Feb 23rd, 2017"
                     reviewRate = "7.8"
-                ></ReviewBox>
+                />
 
                 <ReviewBox
                     reviewText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque esse fuga ipsam, deleniti expedita quo quae odit eius facere vel debitis culpa consequuntur voluptatum nam libero quisquam accusamus dolores reprehenderit!"  
@@ -104,7 +104,7 @@ export default function HotelView() {
                     reviewName = "Mary Thomas"
                     reviewDate = "Sep 30rd, 2017"
                     reviewRate = "9.3"
-                ></ReviewBox>
+                />
                 
                 <Button>Show all <span>&rarr;</span></Button>
             </div>
