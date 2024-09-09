@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Header() {
     return (
-        <header class="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-400 flex justify-between items-center">
+        <header class="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-100 flex justify-between items-center">
             <Image src="/img/logo.png" alt="Logo" width={50} height={50} className="ml-5"></Image>
             <form action="#" className="basis-2/5 flex justify-center items-center">
                 <input type="text" placeholder="Search hotels" className="text-sm bg-gray-100 text-gray-600 rounded-full 
