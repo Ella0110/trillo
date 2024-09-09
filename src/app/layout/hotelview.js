@@ -1,15 +1,16 @@
 import Image from "next/image"
 import Button from "../components/button"
 import ReviewBox from "../components/reviewbox"
+import nextConfig from "../../../next.config.mjs"
 
 export default function HotelView() {
     return (
     <main className="grow bg-white text-gray-500">
         <div className="flex">
         {[
-            '/img/hotel-1.jpg',
-            '/img/hotel-2.jpg',
-            '/img/hotel-3.jpg',
+            `${nextConfig.basePath}/img/hotel-1.jpg`,
+            `${nextConfig.basePath}/img/hotel-2.jpg`,
+            `${nextConfig.basePath}/img/hotel-3.jpg`,
         ].map((src, index)=>(
             <figure key={index}>
                 <Image  src={src} alt="Photo of Hotel" width={400} height={400} className="w-full block" />
@@ -25,14 +26,14 @@ export default function HotelView() {
                 {
                     Array(5).fill(0).map((_, i) => (
                         <svg key={i} className="w-4 h-4 fill-pink-600">
-                            <use xlinkHref="/img/sprite.svg#icon-star"></use>
+                            <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-star`}></use>
                         </svg>
                     ))
                 }
             </div>
             <div className="text-sm flex align-middle">
                 <svg className="w-4 h-4 fill-pink-600 mr-1">
-                    <use xlinkHref="/img/sprite.svg#icon-location-pin"></use>
+                    <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-location-pin`}></use>
                 </svg>
                 <Button>Auckland, New Zealand</Button>         
             </div>
@@ -64,7 +65,7 @@ export default function HotelView() {
                     ].map((src, index)=>(
                         <div key={index} className="flex grow-0 shrink-0 basis-1/2 items-center mb-2">
                             <svg className="w-4 h-4 fill-pink-600 font-thin mr-2">
-                                <use xlinkHref="/img/sprite.svg#icon-chevron-right"></use>
+                                <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-chevron-right`}></use>
                             </svg>
                             <li className="">{src}</li>
                         </div>
@@ -76,10 +77,10 @@ export default function HotelView() {
                     </p>
                     <div className="flex">
                         {[
-                            '/img/user-3.jpg',
-                            '/img/user-4.jpg',
-                            '/img/user-5.jpg',
-                            '/img/user-6.jpg',
+                            `${nextConfig.basePath}/img/user-3.jpg`,
+                            `${nextConfig.basePath}/img/user-4.jpg`,
+                            `${nextConfig.basePath}/img/user-5.jpg`,
+                            `${nextConfig.basePath}/img/user-6.jpg`,
                         ].map((src, index)=>(
                             <Image key={index} src={src} alt="Friend 1" width={200} height={200} 
                             className="h-10 w-10 rounded-full border-solid border-2 border-white -mr-3" />
@@ -91,7 +92,7 @@ export default function HotelView() {
 
                 <ReviewBox
                     reviewText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque esse fuga ipsam, deleniti expedita quo quae odit eius facere vel debitis culpa consequuntur voluptatum nam libero quisquam accusamus dolores reprehenderit!"  
-                    reviewPhoto = "/img/user-1.jpg"
+                    reviewPhoto = {`${nextConfig.basePath}/img/user-1.jpg`}
                     reviewName = "Nick Smith"
                     reviewDate = "Feb 23rd, 2017"
                     reviewRate = "7.8"
@@ -99,7 +100,7 @@ export default function HotelView() {
 
                 <ReviewBox
                     reviewText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque esse fuga ipsam, deleniti expedita quo quae odit eius facere vel debitis culpa consequuntur voluptatum nam libero quisquam accusamus dolores reprehenderit!"  
-                    reviewPhoto = "/img/user-2.jpg"
+                    reviewPhoto = {`${nextConfig.basePath}/img/user-2.jpg`}
                     reviewName = "Mary Thomas"
                     reviewDate = "Sep 30rd, 2017"
                     reviewRate = "9.3"
