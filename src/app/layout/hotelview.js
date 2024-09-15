@@ -19,7 +19,7 @@ export default function HotelView() {
         </div>
 
         <div className="flex items-center border-b-[1px] border-solid border-gray-100">
-            <h1 className="text-xl font-light uppercase tracking-tight py-4 px-8">
+            <h1 className="text-base lg:text-xl font-light uppercase tracking-tight py-4 px-8">
                 Hotel XX
             </h1>
             <div className="flex grow">
@@ -44,15 +44,15 @@ export default function HotelView() {
             </div>
         </div>
 
-        <div className="flex p-11 bg-gray-100 border-b-[1px] border-solid border-gray-100 text-gray-500 text-[14px]">
-            <div className="bg-white grow-0 shrink-0 basis-3/5 mr-11 shadow-lg p-7">
+        <div className="flex p-11 flex-col lg:flex-row bg-gray-100 border-b-[1px] border-solid border-gray-100 text-gray-500 text-[14px]">
+            <div className="bg-white grow-0 shrink-0 basis-3/5 lg:mr-11 shadow-lg p-7">
                 <p className="mb-5">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ullam dolorum nihil eos voluptatibus consequuntur, voluptates fuga. Iusto quia reiciendis, non nihil quam tenetur, saepe, illo omnis aspernatur quo dolor.
                 </p>
                 <p className="mb-5">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ullam dolorum nihil eos voluptatibus consequuntur, voluptates fuga. Iusto quia reiciendis, non nihil quam tenetur, saepe, illo omnis aspernatur quo dolor.
                 </p>
-                <ul className="my-8 p-8 border-y-[1px] border-solid border-gray-100 flex flex-wrap">
+                <ul className="my-2 lg:my-8 p-4 lg:p-8 border-y-[1px] border-solid border-gray-100 flex flex-wrap">
                     {[
                         'Close to the beach',
                         'Breakfast included',
@@ -63,7 +63,7 @@ export default function HotelView() {
                         'We speak all language',
                         'Perfect for families',
                     ].map((src, index)=>(
-                        <div key={index} className="flex grow-0 shrink-0 basis-1/2 items-center mb-2">
+                        <div key={index} className="flex grow-0 shrink-0 lg:basis-1/2 items-center mb-2">
                             <svg className="w-4 h-4 fill-pink-600 font-thin mr-2">
                                 <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-chevron-right`}></use>
                             </svg>
@@ -71,8 +71,8 @@ export default function HotelView() {
                         </div>
                     ))}
                 </ul>
-                <div className="text-sm flex items-center">
-                    <p className="mr-auto">
+                <div className="text-sm flex flex-col lg:flex-row items-start lg:items-center">
+                    <p className="mb-4 lg:mr-auto">
                         Lucy and 3 other friends recommend this hotel.
                     </p>
                     <div className="flex">

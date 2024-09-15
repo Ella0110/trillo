@@ -4,6 +4,7 @@ import Notification from "../components/notification";
 
 export default function Header() {
   return (
+    <div>
     <header class="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-100 flex justify-between items-center">
       <Image
         src={`${nextConfig.basePath}/img/logo.png`}
@@ -12,7 +13,7 @@ export default function Header() {
         height={50}
         className="ml-5"
       ></Image>
-      <form action="#" className="basis-2/5 flex justify-center items-center">
+      <form action="#" className="hidden md:block basis-2/5 flex justify-center items-center">
         <input
           type="text"
           placeholder="Search hotels"
@@ -58,5 +59,25 @@ export default function Header() {
         </div>
       </nav>
     </header>
+
+
+    <form action="#" className="md:hidden basis-2/5 flex justify-center items-center">
+    <input
+      type="text"
+      placeholder="Search hotels"
+      className="text-sm bg-gray-100 text-gray-600 
+            border-none py-1.5 px-5 w-[90%] transition-all duration-[30] -mr-5 focus:w-full focus:bg-gray-[150] focus:outline-none
+             placeholder:font-thin placeholder:text-gray-300"
+    />
+    <button className="bg-gray-100 active:translate-y-[2px]">
+      <svg className="h-5 w-5 fill-gray-400">
+        <use
+          xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-magnifying-glass`}
+        ></use>
+      </svg>
+    </button>
+  </form>
+  </div>
+
   );
 }

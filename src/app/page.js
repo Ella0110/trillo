@@ -6,9 +6,9 @@ import HotelView from "./layout/hotelview";
 export default function Home() {
   return (
     <div>
-      <div className="max-w-[75rem] min-h-[50rem] my-20 mx-auto bg-gray-300 shadow-xl">
+      <div className="max-w-[75rem] min-h-[50rem] lg:my-20 mx-auto bg-gray-100 shadow-xl">
         <Header />
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row">
           <Sidebar />
           <HotelView />
         </div>
