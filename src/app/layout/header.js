@@ -66,10 +66,10 @@ export default function Header() {
       type="text"
       placeholder="Search hotels"
       className="text-sm bg-gray-100 text-gray-600 
-            border-none py-1.5 px-5 w-[90%] transition-all duration-[30] -mr-5 focus:w-full focus:bg-gray-[150] focus:outline-none
+            border-none py-1.5 px-5 transition-all duration-[30] -mr-5 w-full focus:bg-gray-[150] focus:outline-none
              placeholder:font-thin placeholder:text-gray-300"
     />
-    <button className="bg-gray-100 active:translate-y-[2px]">
+    <button className="bg-gray-100">
       <svg className="h-5 w-5 fill-gray-400">
         <use
           xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-magnifying-glass`}
