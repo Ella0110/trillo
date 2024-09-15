@@ -44,7 +44,7 @@ export default function HotelView() {
             </div>
         </div>
 
-        <div className="flex p-11 flex-col lg:flex-row bg-gray-100 border-b-[1px] border-solid border-gray-100 text-gray-500 text-[14px]">
+        <div className="flex p-11 flex-col gap-8 lg:gap-0 lg:flex-row bg-gray-100 border-b-[1px] border-solid border-gray-100 text-gray-500 text-[14px]">
             <div className="bg-white grow-0 shrink-0 basis-3/5 lg:mr-11 shadow-lg p-7">
                 <p className="mb-5">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ullam dolorum nihil eos voluptatibus consequuntur, voluptates fuga. Iusto quia reiciendis, non nihil quam tenetur, saepe, illo omnis aspernatur quo dolor.
