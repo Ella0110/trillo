@@ -1,9 +1,21 @@
+"use client"
 import Image from "next/image"
 import Button from "../components/button"
 import ReviewBox from "../components/reviewbox"
 import nextConfig from "../../../next.config.mjs"
+import useSWR from "swr"
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function HotelView() {
+
+    const { data, error, isLoading } = useSWR('http://localhost:5260/api/hotels/4', fetcher)
+ 
+    if (error) return <div>failed to load</div>
+    if (isLoading) return <div>loading...</div>
+
+    console.log(data.name)
+
     return (
     <main className="grow bg-white text-gray-500">
         <div className="flex">
@@ -20,7 +32,7 @@ export default function HotelView() {
 
         <div className="flex items-center border-b-[1px] border-solid border-gray-100">
             <h1 className="text-base lg:text-xl font-light uppercase tracking-tight py-4 px-8">
-                Hotel XX
+                {data.name}
             </h1>
             <div className="flex grow">
                 {
@@ -35,33 +47,33 @@ export default function HotelView() {
                 <svg className="w-4 h-4 fill-pink-600 mr-1">
                     <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-location-pin`}></use>
                 </svg>
-                <Button>Auckland, New Zealand</Button>         
+                <Button>{data.address}</Button>         
             </div>
 
             <div className="bg-pink-600 text-white ml-7 px-5 self-stretch flex flex-col justify-center items-center">
-                <div className="text-2xl font-light -mb-1">8.6</div>
-                <div className="text-[10px] uppercase">429 votes</div>
+                <div className="text-2xl font-light -mb-1">{data.reviews[0]?.rating}</div>
+                <div className="text-[10px] uppercase">{data.totalVote} votes</div>
             </div>
         </div>
 
         <div className="flex p-11 flex-col gap-8 lg:gap-0 lg:flex-row bg-gray-100 border-b-[1px] border-solid border-gray-100 text-gray-500 text-[14px]">
             <div className="bg-white grow-0 shrink-0 basis-3/5 lg:mr-11 shadow-lg p-7">
                 <p className="mb-5">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ullam dolorum nihil eos voluptatibus consequuntur, voluptates fuga. Iusto quia reiciendis, non nihil quam tenetur, saepe, illo omnis aspernatur quo dolor.
+                    {data.description[0]}
                 </p>
                 <p className="mb-5">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ullam dolorum nihil eos voluptatibus consequuntur, voluptates fuga. Iusto quia reiciendis, non nihil quam tenetur, saepe, illo omnis aspernatur quo dolor.
+                    {data.description[1]}
                 </p>
                 <ul className="my-2 lg:my-8 p-4 lg:p-8 border-y-[1px] border-solid border-gray-100 flex flex-wrap">
                     {[
-                        'Close to the beach',
-                        'Breakfast included',
-                        'Free airport shuttle',
-                        'Free wifi in all room',
-                        'Air conditioning and heating',
-                        'Pets allowed',
-                        'We speak all language',
-                        'Perfect for families',
+                        `${data.subDescription[0]}`,
+                        `${data.subDescription[1]}`,
+                        `${data.subDescription[2]}`,
+                        `${data.subDescription[3]}`,
+                        `${data.subDescription[4]}`,
+                        `${data.subDescription[5]}`,
+                        `${data.subDescription[6]}`,
+                        `${data.subDescription[7]}`,
                     ].map((src, index)=>(
                         <div key={index} className="flex grow-0 shrink-0 lg:basis-1/2 items-center mb-2">
                             <svg className="w-4 h-4 fill-pink-600 font-thin mr-2">
@@ -91,19 +103,19 @@ export default function HotelView() {
             <div className="grow flex flex-col items-center">
 
                 <ReviewBox
-                    reviewText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque esse fuga ipsam, deleniti expedita quo quae odit eius facere vel debitis culpa consequuntur voluptatum nam libero quisquam accusamus dolores reprehenderit!"  
+                    reviewText = {`${data.reviews[0]?.body}`}  
                     reviewPhoto = {`${nextConfig.basePath}/img/user-1.jpg`}
                     reviewName = "Nick Smith"
                     reviewDate = "Feb 23rd, 2017"
-                    reviewRate = "7.8"
+                    reviewRate = {`${data.reviews[0]?.rating}`}  
                 />
 
                 <ReviewBox
-                    reviewText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque esse fuga ipsam, deleniti expedita quo quae odit eius facere vel debitis culpa consequuntur voluptatum nam libero quisquam accusamus dolores reprehenderit!"  
+                    reviewText = {`${data.reviews[1]?.body}`}   
                     reviewPhoto = {`${nextConfig.basePath}/img/user-2.jpg`}
                     reviewName = "Mary Thomas"
                     reviewDate = "Sep 30rd, 2017"
-                    reviewRate = "9.3"
+                    reviewRate = {`${data.reviews[1]?.rating}`} 
                 />
                 
                 <Button>Show all <span>&rarr;</span></Button>

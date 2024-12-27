@@ -8,7 +8,7 @@ export default function ReviewBox({reviewText, reviewPhoto, reviewName, reviewDa
         </blockquote>
         <figcaption className="flex items-center">
             <Image src={reviewPhoto} alt="User 1" width={200} height={200} className="h-11 w-11 rounded-full mr-4" />
-            <div className="mr-auto">
+            <div className="mr-4">
                 <p className="text-xs uppercase font-semibold mb-[4px]">{reviewName}</p>
                 <p className="text-[10px]">{reviewDate}</p>
             </div>
