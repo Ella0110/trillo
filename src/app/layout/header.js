@@ -5,7 +5,7 @@ import Notification from "../components/notification";
 export default function Header() {
   return (
     <div>
-    <header class="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-100 flex justify-between items-center">
+    <header className="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-100 flex justify-between items-center">
       <Image
         src={`${nextConfig.basePath}/img/logo.png`}
         alt="Logo"
