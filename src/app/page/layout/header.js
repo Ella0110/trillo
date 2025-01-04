@@ -6,14 +6,14 @@ import Link from "next/link";
 export default function Header() {
   return (
     <div>
-    <header className="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-200 flex justify-between items-center">
+    <header className="text-sm h-14 px-10 bg-white border-b-[1px] border-solid border-gray-200 flex justify-between items-center">
       <Link href="/">
         <Image
           src={`${nextConfig.basePath}/img/logo.png`}
           alt="Logo"
           width={50}
           height={50}
-          className="ml-5"
+          className=""
         ></Image>
      </Link>
       <form action="#" className="hidden md:block basis-2/5 flex justify-center items-center">
@@ -50,7 +50,7 @@ export default function Header() {
           </svg>
         </Notification>
 
-        <div className="px-5 flex items-center h-full hover:bg-gray-200">
+        <div className="pl-5 flex items-center h-full hover:bg-gray-200">
           <Image
             src={`${nextConfig.basePath}/img/image.png`}
             alt="User photo"
@@ -68,7 +68,7 @@ export default function Header() {
     <input
       type="text"
       placeholder="Search hotels"
-      className="text-sm bg-gray-100 text-gray-600 
+      className="text-sm  bg-gray-100 text-gray-600 
             border-none py-1.5 px-5 transition-all duration-[30] -mr-5 w-full focus:bg-gray-[150] focus:outline-none
              placeholder:font-thin placeholder:text-gray-300"
     />
