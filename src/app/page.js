@@ -1,19 +1,27 @@
 import Header from "./layout/header";
-import Sidebar from "./layout/sidebar";
-import Body from "./layout/searchbar";
-import SearchBar from "./layout/searchbar";
+import SearchBar from "./components/searchbar";
+import HomeContent from "./layout/homecontent";
 
 export default function Home() {
   return (
     <div>
-      <div className="max-w-[75rem] min-h-[50rem]  bg-white shadow-xl">
+      <div className="   bg-white shadow-xl">
         <Header />
-        
-          {/* <Sidebar /> */}
-          {/* <HotelView /> */}
+        <div className="flex justify-between items-center gap-4 text-white bg-gradient-to-br from-[#ff3366] to-[#ba265d] flex-col px-40 py-10">
+          <div className="w-1/2 flex flex-col gap-2 items-center">
+            <div className="text-2xl ">Trillo</div>
+            <div className="text-center text-sm font-light">A modern, responsive travel booking website built using Next.js, React, and Tailwind CSS.
+This project is a refactor of the original design from the "Advanced CSS and Sass" course.</div>
+            <a 
+              href="https://github.com/Ella0110/trillo" 
+              className="underline"
+              >
+                Source code</a>
+          </div>
           <SearchBar />
-          <div className="flex flex-col border-t-[1px] mt-8 lg:flex-row">
         </div>
+        <HomeContent />
+          
       </div>
     </div>
   );

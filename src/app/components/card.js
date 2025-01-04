@@ -1,11 +1,16 @@
 import Image from "next/image";
 import nextConfig from "../../../next.config.mjs";
+import Link from "next/link";
 
 export default function Card({cardPhoto, cardAddress, cardRate, cardDetailAddress, cardPrice}) {
   return(
+    <Link href="/page/hotel">
     <div className="flex flex-col ">
+
             <div className="rounded-lg relative h-[11rem] bg-gray-300">
-              <Image src={cardPhoto} alt="card 1" width={400} height={300} className="rounded-lg h-[11rem] object-cover" />
+              
+               <Image src={cardPhoto} alt="card 1" href="/page/hotel" width={400} height={300} className="rounded-lg h-[11rem] object-cover" />
+              
               <input id="heart" type="checkbox" className="peer/heart w-4 h-4 bg-clip-text appearance-none absolute top-2 z-20  right-2" />
               <svg className="w-4 h-4 absolute top-2 right-2 fill-white z-10 peer-checked/heart:hidden">
                   <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-heart-outlined`}></use>
@@ -52,5 +57,6 @@ export default function Card({cardPhoto, cardAddress, cardRate, cardDetailAddres
              </div>
             </div>
           </div>
+          </Link>
   );
 };

@@ -45,18 +45,18 @@ export default function Header({children}) {
 
   return (
     <>
-      <header className="text-sm h-20 bg-white  flex justify-between items-center">
+      <header className="text-sm h-14 px-10 bg-white border-gray-200 border-b-[1px] flex justify-between items-center">
       <Link href="/">
         <Image
           src={`${nextConfig.basePath}/img/logo.png`}
           alt="Logo"
           width={50}
           height={50}
-          className="ml-20 "
+          className=""
         ></Image>
      </Link>
-        <nav
-          className="flex static items-center border-slate-900/15 border-gray-400 lg:gap-x-12 p-6 lg:px-8"
+        <div
+          className="flex  items-center  p-6 lg:px-8"
           aria-label="Global"
         >
           
@@ -64,7 +64,7 @@ export default function Header({children}) {
           {!isSignin ? (
             <div className="lg:flex absolute right-0  p-4 lg:justify-end">
               <button
-                className="text-sm font-semibold  bg-zinc-800 rounded-full py-2 px-4 text-white hover:bg-black"
+                className="text-xs font-semibold  bg-pink-600 rounded-full py-1 px-3 text-white hover:bg-pink-700"
                 onClick={() => {
                   setShowModal(true)
                   setAuthStates("login")
@@ -73,7 +73,7 @@ export default function Header({children}) {
                 Log in{" "}
               </button>
               <button
-                className="text-sm pl-2 font-semibold rounded-full py-2 px-4 text-white-900"
+                className="text-xs pl-2 font-semibold rounded-full py-2 px-4 text-zinc-800"
                 onClick={() => {
                   setShowModal(true)
                   setAuthStates("signup")
@@ -93,7 +93,7 @@ export default function Header({children}) {
           ) : (
             <div className="lg:flex absolute right-0 p-4 lg:justify-end">
             <button
-              className="text-sm lg:justify-end font-semibold  bg-gray-800 rounded-full py-2 px-4 text-white hover:bg-black"
+              className="text-xs lg:justify-end font-semibold  bg-gray-800 rounded-full py-2 px-4 text-white hover:bg-black"
               onClick={() => {
                 handleSignOut()
               }}
@@ -102,7 +102,7 @@ export default function Header({children}) {
             </button>
             </div>
           )}
-        </nav>
+        </div>
       </header>
     </>
   )
