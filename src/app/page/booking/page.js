@@ -3,12 +3,15 @@ import nextConfig from "../../../../next.config.mjs";
 import Card from "@/app/components/card";
 import ButtonGroup from "@/app/components/pilltable";
 import PriceRangeSlider from "@/app/components/slide";
+import Header from "@/app/layout/header";
 
 
 export default function Booking() {
 
   return (
-    <div className="flex w-full bg-white dark:bg-black min-h-[75rem]">
+    <div>
+    <Header />
+    <div className="flex w-full bg-white dark:bg-zinc-800 min-h-[75rem]">
       {/* Left Panel */}
       <div className="flex flex-col  text-xs font-normal text-gray-300 bg-zinc-800 dark:text-gray-300   basis-1/5 border-r-[1px]">
         <div className="flex flex-col m-[12%] mt-7 mb-[5%] ">
@@ -145,6 +148,6 @@ export default function Booking() {
       </div>
 
     </div>
-
+    </div>
   );
 }
