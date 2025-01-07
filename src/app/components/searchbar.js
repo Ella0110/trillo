@@ -39,7 +39,7 @@ const SearchBar = () => {
         </div>
 
         <div className="p-2">
-          <Link href="/page/booking">
+          <Link href="/booking">
           <button onClick={handleSearch} className="bg-pink-600  p-2 text-white rounded-full shadow-sm hover:bg-pink-700"
           >
             <svg className="h-5 w-5 fill-white">

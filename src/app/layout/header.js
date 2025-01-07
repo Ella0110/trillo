@@ -6,7 +6,7 @@ import nextConfig from "../../../next.config.mjs"
 import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react"
-import { signOut, getCurrentUser } from "@aws-amplify/auth"
+import { signOut, getCurrentUser, fetchAuthSession } from "@aws-amplify/auth"
 import { useRouter } from 'next/navigation'
 
 export default function Header({children}) {
@@ -18,6 +18,7 @@ export default function Header({children}) {
   useEffect(() => {
     async function getUserState(){
     try{
+      await fetchAuthSession({ forceRefresh: true });
       // const start = Date.now()
       const { signInDetails, username, userId } = await getCurrentUser()
       // console.log(Date.now() - start)
