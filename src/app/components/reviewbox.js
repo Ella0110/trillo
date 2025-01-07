@@ -2,8 +2,8 @@ import Image from "next/image"
 
 export default function ReviewBox({reviewText, reviewPhoto, reviewName, reviewDate, reviewRate}) {
     return(
-        <figure className="flex gap-5 flex-col flex-none w-[15rem] bg-white shadow-lg p-5">
-        <blockquote className="">
+        <figure className="flex gap-5 flex-col justify-between flex-none w-[18rem] bg-white shadow-lg p-5">
+        <blockquote className="text-wrap">
             {reviewText}
         </blockquote>
         <figcaption className="flex items-center">
