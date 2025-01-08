@@ -1,8 +1,53 @@
-import Header from "../layout/header";
+'use client'
 
+import Header from "../layout/header";
 import Image from "next/image";
+import useSWR from "swr";
 import nextConfig from "../../../next.config.mjs";
+import { useSearchParams } from "next/navigation";
+import PricePanel from "../components/pricepanel";
+
+const fetcher = async (url) => {
+  const response = await fetch(url)
+  if(!response.ok) {
+    throw new Error('API request failed')
+  }
+  return response.json()
+}
+
 export default function Order() {
+
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+  const checkIn = searchParams.get('checkIn')
+  const checkOut = searchParams.get('checkOut')
+  const guests = searchParams.get('guests')
+
+  var datecheckIn = new Date(checkIn)
+  var datecheckOut = new Date(checkOut)
+  const cancelDate = new Date(datecheckIn)
+  cancelDate.setDate(cancelDate.getDate() - 5)
+  
+  const formattedDate = new Intl.DateTimeFormat('en-GB', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  })
+
+  const formatCheckIn = formattedDate.format(datecheckIn)
+  const formatCheckOut = formattedDate.format(datecheckOut)
+  const formatCancelDate = formattedDate.format(cancelDate)
+
+  const { data:hotel, error, isLoading } = useSWR(`http://localhost:5260/api/hotels/${id}`, fetcher)
+
+  if (error) return <div>failed to load: {error.message}</div>
+  if (isLoading) 
+    return  
+      <div className="flex justify-center p-4">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      </div>
+
   return (
     <>
       <Header />
@@ -16,7 +61,7 @@ export default function Order() {
               <div className="flex gap-6">
                 <div className="flex gap-1">
                   <div className="font-semibold">Guest:</div>
-                  <div className="">1 Adult</div>
+                  <div className="">{guests} Adult</div>
                 </div>
                 <div className="underline text-gray-500">Edit</div>
               </div>
@@ -24,7 +69,7 @@ export default function Order() {
               <div className="flex gap-6">
                 <div className="flex gap-1">
                   <div className="font-semibold">Check in:</div>
-                  <div className="">Sat 4 Jan 2025</div>
+                  <div className="">{formatCheckIn}</div>
                 </div>
                 <div className="underline text-gray-500">Edit</div>
               </div>
@@ -32,7 +77,7 @@ export default function Order() {
               <div className="flex gap-6">
                 <div className="flex gap-1">
                   <div className="font-semibold">Check out:</div>
-                  <div className="">Sat 9 Jan 2025</div>
+                  <div className="">{formatCheckOut}</div>
                 </div>
                 <div className="underline text-gray-500">Edit</div>
               </div>
@@ -40,7 +85,7 @@ export default function Order() {
               <div className="flex gap-6">
                 <div className="flex gap-1">
                   <div className="font-semibold">Free cancellation:</div>
-                  <div className="">Before 1 Jan 2025</div>
+                  <div className="">Before {formatCancelDate}</div>
                 </div>
               </div>
             </div>
@@ -87,7 +132,7 @@ export default function Order() {
               <div className="flex flex-col justify-between">
                 <div>
                   <div className="text-xs text-gray-500">Entire Cabin</div>
-                  <div>Glacier Pines Cabin (New Hot Tub Installed!)</div>
+                  <div>{hotel.name}</div>
                 </div>
                 <div className="flex gap-2">
                   <div className="flex gap-1 items-center">
@@ -96,8 +141,8 @@ export default function Order() {
                         xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-star`}
                       ></use>
                     </svg>
-                    <div className="text-gray-700 ">4.99 </div>
-                    <div className="text-gray-500 ">(110 reviews)</div>
+                    <div className="text-gray-700 ">{hotel.totalRating}</div>
+                    <div className="text-gray-500 ">({hotel.totalVote} reviews)</div>
                   </div>
                   <div className="flex gap-1 items-center">
                     <svg className="w-4 h-4 fill-gray-600">
@@ -119,20 +164,10 @@ export default function Order() {
             <div className="text-xl font-semibold border-t-[1px] pt-3">
               Price Detail
             </div>
-            <div className="grid grid-cols-2 gap-1">
-              <div className="underline">500 * 5 nights</div>
-              <div className="justify-self-end">$2500</div>
-              <div className="underline">Long stay discount</div>
-              <div className="justify-self-end text-pink-500">-$300</div>
-              <div className="underline">Cleaning fee</div>
-              <div className="justify-self-end">$200</div>
-              <div className="underline">Service fee</div>
-              <div className="justify-self-end">$0</div>
-            </div>
-            <div className="flex justify-between border-t-[1px] pt-3 ">
-              <div>Total (USD)</div>
-              <div>$2400</div>
-            </div>
+            <PricePanel 
+              hotel={hotel}
+              checkIn={checkIn}
+              checkOut={checkOut}/>
           </div>
           <a className="flex items-center justify-center rounded-lg h-10 text-white bg-pink-600">
             Book Now
