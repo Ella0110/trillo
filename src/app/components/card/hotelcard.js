@@ -5,7 +5,7 @@ import nextConfig from "../../../../next.config.mjs";
 import ControllerPoint from "../controllerpoint";
 
 export default function HotelCard({
-  cardSize = "14rem",
+  cardSize = "18rem",
   cardPhoto,
   cardAddress,
   cardRate,
@@ -18,13 +18,13 @@ export default function HotelCard({
       <Link href="/hotel">
         <div className="flex flex-col pb-3">
           <div className="flex justify-center items-center">
-            <div style={{ width: cardSize }} className={`rounded-lg h-[11rem] w-[${cardSize}]`}>
+            <div style={{ width: cardSize }} className={`rounded-lg h-[12rem] w-[${cardSize}]`}>
               <Image
                 src={cardPhoto}
                 alt="picture of the hotel"
                 width={400}
                 height={300}
-                className="rounded-lg h-[11rem] object-cover"
+                className="rounded-lg h-[12rem] object-cover"
               />
             </div>
           </div>

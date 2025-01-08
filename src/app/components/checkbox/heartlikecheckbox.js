@@ -5,7 +5,7 @@ export default function HeartLikeCheckBox({
   size = "4", 
   color = "white", 
   // activecolor = "fill-pink-600", 
-  positionClass = "top-2 right-2"
+  positionClass = "top-2 right-4"
 }) {
   return (
     <>

@@ -2,19 +2,20 @@ export default function SideBarCheckBox({
   id,
   content,
   size = "4",
-  color = "pink-600",
-  textcolor = "gray-100",
+  color = "accent-pink-600",
+  textcolor = "text-gray-100",
 }) {
   return (
     <div className="flex items-center">
       <input
         id={id}
         type="checkbox"
-        className={`peer w-${size} h-${size} accent-${color}`}
+        style={{ width: size }}
+        className={`peer w-${size} h-${size} ${color}`}
       />
       <label
-        htmlFor="checkbox_1"
-        className={`ms-2 peer-checked:text-${textcolor}`}
+        htmlFor={id}
+        className={`ms-2 peer-checked:${textcolor}`}
       >
         {content}
       </label>

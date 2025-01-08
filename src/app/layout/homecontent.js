@@ -53,7 +53,7 @@ export default function HomeContent() {
 
         <div className="flex gap-10 flex-none overflow-x-scroll text-sm">
           <HotelCard
-            cardSize="11rem"
+            cardSize="12rem"
             cardPhoto={`${nextConfig.basePath}/img/hotel-1.jpg`}
             cardAddress="Groveland, California"
             cardRate="4.91"
@@ -62,7 +62,7 @@ export default function HomeContent() {
           />
 
           <HotelCard
-            cardSize="11rem"
+            cardSize="12rem"
             cardPhoto={`${nextConfig.basePath}/img/hotel-1.jpg`}
             cardAddress="Groveland, California"
             cardRate="4.91"
@@ -71,7 +71,7 @@ export default function HomeContent() {
           />
 
           <HotelCard
-            cardSize="11rem"
+            cardSize="12rem"
             cardPhoto={`${nextConfig.basePath}/img/hotel-2.jpg`}
             cardAddress="Groveland, California"
             cardRate="4.91"
@@ -80,7 +80,7 @@ export default function HomeContent() {
           />
 
           <HotelCard
-            cardSize="11rem"
+            cardSize="12rem"
             cardPhoto={`${nextConfig.basePath}/img/hotel-3.jpg`}
             cardAddress="Groveland, California"
             cardRate="4.91"
@@ -89,7 +89,7 @@ export default function HomeContent() {
           />
 
           <HotelCard
-            cardSize="11rem"
+            cardSize="12rem"
             cardPhoto={`${nextConfig.basePath}/img/hotel-2.jpg`}
             cardAddress="Groveland, California"
             cardRate="4.91"

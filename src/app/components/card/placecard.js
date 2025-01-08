@@ -2,13 +2,13 @@ import Image from "next/image";
 export default function PlaceCard({ cardPhoto, cardHeading, cardSubHeading }) {
   return (
     <div className="flex flex-col justify-center gap-4 pb-3">
-      <div className="bg-gray-300 h-[10rem]  w-[10rem]">
+      <div className="bg-gray-300 h-[12rem]  w-[12rem]">
         <Image
           src={cardPhoto}
           alt=""
           width={400}
           height={300}
-          className="h-[10rem] object-cover shadow-lg"
+          className="h-[12rem] object-cover shadow-lg"
         />
       </div>
       <div className="flex flex-col items-center">
