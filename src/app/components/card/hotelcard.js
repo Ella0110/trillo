@@ -5,17 +5,18 @@ import nextConfig from "../../../../next.config.mjs";
 import ControllerPoint from "../controllerpoint";
 
 export default function HotelCard({
-  cardSize = "18rem",
+  cardSize = "19rem",
   cardPhoto,
   cardAddress,
   cardRate,
-  cardDetailAddress,
+  cardHotelName,
   cardPrice,
-  textsize
+  textsize,
+  hotelId
 }) {
   return (
     <div className={`relative ${textsize}`}>
-      <Link href="/hotel">
+      <Link href={`/hotel?id=${hotelId}`}>
         <div className="flex flex-col pb-3">
           <div className="flex justify-center items-center">
             <div style={{ width: cardSize }} className={`rounded-lg h-[12rem] w-[${cardSize}]`}>
@@ -44,9 +45,9 @@ export default function HotelCard({
                 <div>{cardRate}</div>
               </div>
             </div>
-            <div className="text-gray-400">{cardDetailAddress}</div>
+            <div className="text-gray-500">{cardHotelName}</div>
             <div className="flex gap-1">
-              <div className="font-semibold">{cardPrice}</div>
+              <div className="font-semibold">${cardPrice}</div>
               <div>night</div>
             </div>
           </div>
