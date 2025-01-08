@@ -4,19 +4,10 @@ import Button from "@/app/components/button"
 import ReviewBox from "@/app/components/reviewbox"
 import nextConfig from "../../../next.config.mjs"
 import useSWR from "swr"
+import Link from "next/link"
 import Reserve from "./reserve"
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-
-export default function HotelView() {
-
-    const { data, error, isLoading } = useSWR('http://localhost:5260/api/hotels/4', fetcher)
-    console.log(JSON.stringify(data, null, 2)); 
- 
-    if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
-
-    // console.log(data.name)
+export default function HotelView({hotel}) {
 
     return (
     <div className="flex flex-col basis-5/6 bg-white text-gray-500">
@@ -34,7 +25,7 @@ export default function HotelView() {
 
         <div className="flex items-center border-b-[1px] border-solid border-gray-100">
             <h1 className="text-base lg:text-lg font-light uppercase tracking-tight py-4 px-8">
-                {data.name}
+                {hotel.name}
             </h1>
             <div className="flex grow">
                 {
@@ -49,12 +40,12 @@ export default function HotelView() {
                 <svg className="w-4 h-4 fill-pink-600 mr-1">
                     <use xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-location-pin`}></use>
                 </svg>
-                <Button>{data.address}</Button>         
+                <Button>{hotel.address}</Button>         
             </div>
 
             <div className="bg-pink-600 text-white ml-7 px-5 self-stretch flex flex-col justify-center items-center">
-                <div className="text-2xl font-light -mb-1">{data.reviews[0]?.rating}</div>
-                <div className="text-[10px] uppercase">{data.totalVote} votes</div>
+                <div className="text-2xl font-light -mb-1">{hotel.reviews[0]?.rating}</div>
+                <div className="text-[10px] uppercase">{hotel.totalVote} votes</div>
             </div>
         </div>
 
@@ -62,21 +53,21 @@ export default function HotelView() {
             <div className="flex w-2/3 flex-col gap-5 ">
                 <div className="bg-white shadow-lg p-5">
                     <p className="mb-5">
-                        {data.description[0]}
+                        {hotel.description[0]}
                     </p>
                     <p className="mb-5">
-                        {data.description[1]}
+                        {hotel.description[1]}
                     </p>
                     <ul className="my-2 lg:my-8 p-4 lg:p-8 border-y-[1px] border-solid border-gray-100 flex flex-wrap">
                         {[
-                            `${data.subDescription[0]}`,
-                            `${data.subDescription[1]}`,
-                            `${data.subDescription[2]}`,
-                            `${data.subDescription[3]}`,
-                            `${data.subDescription[4]}`,
-                            `${data.subDescription[5]}`,
-                            `${data.subDescription[6]}`,
-                            `${data.subDescription[7]}`,
+                            `${hotel.subDescription[0]}`,
+                            `${hotel.subDescription[1]}`,
+                            `${hotel.subDescription[2]}`,
+                            `${hotel.subDescription[3]}`,
+                            `${hotel.subDescription[4]}`,
+                            `${hotel.subDescription[5]}`,
+                            `${hotel.subDescription[6]}`,
+                            `${hotel.subDescription[7]}`,
                         ].map((src, index)=>(
                             <div key={index} className="flex grow-0 shrink-0 lg:basis-1/2 items-center mb-2">
                                 <svg className="w-4 h-4 fill-pink-600 font-thin mr-2">
@@ -104,25 +95,19 @@ export default function HotelView() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <div className="flex gap-3 shadow-lg">
-                        <ReviewBox
-                            reviewText = {`${data.reviews[0]?.body}`}  
-                            reviewPhoto = {`${nextConfig.basePath}/img/user-1.jpg`}
-                            reviewName = "Nick Smith"
-                            reviewDate = "Feb 23rd, 2017"
-                            reviewRate = {`${data.reviews[0]?.rating}`}  
-                        />
+                    <div className="flex gap-3 shadow-lg flex-none overflow-auto">
 
-                        <ReviewBox
-                            reviewText = {`${data.reviews[1]?.body}`}  
-                            reviewPhoto = {`${nextConfig.basePath}/img/user-2.jpg`}
-                            reviewName = "Mary Thomas"
-                            reviewDate = "Sep 30rd, 2017"
-                            reviewRate = {`${data.reviews[1]?.rating}`} 
+                        {hotel.reviews.slice(0, 2).map((review, i) => (
+                            <ReviewBox
+                                key={i}
+                                reviewText = {review.body}  
+                                reviewPhoto = {`${nextConfig.basePath}/img/user-1.jpg`}
+                                reviewName = "Nick Smith"
+                                reviewDate = "Feb 23rd, 2017"
+                                reviewRate = {review.rating}  
                         />
+                        ))}
 
-                        
-                        
                         <a href="" className="flex justify-center items-center w-full text-pink-600 underline bg-white">Show more</a>
                     </div>
                     
@@ -153,7 +138,8 @@ export default function HotelView() {
             </div>
 
             <div className="w-1/3 flex flex-col gap-5">
-                <Reserve />
+                <Reserve hotel={hotel} />
+                <Link href={`https://www.google.com/maps/place/${hotel.address}`}>
                 <div className="relative bg-white shadow-lg">
                     <Image  src={`${nextConfig.basePath}/img/map.jpg`} alt="Photo of Hotel" width={400} height={400} className="w-full blur-sm block" />
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -163,6 +149,7 @@ export default function HotelView() {
                         <div className="text-lg font-semibold text-pink-600">SHOW ON MAP</div>
                     </div>
                 </div>
+                </Link>
             </div>
         </div>
 
