@@ -12,11 +12,12 @@ export default function HotelCard({
   cardHotelName,
   cardPrice,
   textsize,
-  hotelId
+  hotelId,
+  name = ''
 }) {
   return (
-    <div className={`relative ${textsize}`}>
-      <Link href={`/hotel?id=${hotelId}`}>
+    <div name={name} className={`relative ${textsize}`}>
+      <Link id="hotelcard" href={`/hotel?id=${hotelId}`}>
         <div className="flex flex-col pb-3">
           <div className="flex justify-center items-center">
             <div style={{ width: cardSize }} className={`rounded-lg h-[12rem] w-[${cardSize}]`}>

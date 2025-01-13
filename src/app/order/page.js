@@ -51,7 +51,7 @@ export default function Order() {
   return (
     <>
       <Header />
-      <div className="flex gap-8 w-full  p-8 bg-gray-100">
+      <div className="flex gap-8 w-full  p-8 bg-gray-100 dark:text-gray-700">
         <div className="flex flex-col basis-3/5 gap-5 p-10 bg-white shadow-lg">
           {/*Trip details*/}
           <div className="flex flex-col gap-3">
@@ -123,7 +123,7 @@ export default function Order() {
           <div className="flex flex-col gap-4 p-10 bg-white">
             <div className="flex gap-2">
               <Image
-                src={`${nextConfig.basePath}/img/hotel-2.jpg`}
+                src={hotel.gallery?.[0]}
                 alt="hotel picture "
                 width={100}
                 height={100}
