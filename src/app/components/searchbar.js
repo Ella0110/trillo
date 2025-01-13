@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import nextConfig from "../../../next.config.mjs";
+import nextConfig from "../../../next.config";
 import Link from "next/link";
 import DateInput from "./dateinput";
 
@@ -45,6 +45,7 @@ const SearchBar = () => {
         <div className="flex flex-col justify-center p-2 pl-8 rounded-full cursor-pointer hover:bg-gray-100">
           <label className="block text-black ">Where</label>
           <input
+            id="place"
             type="text"
             placeholder="Destination"
             className="w-full bg-transparent focus:outline-none"
@@ -77,6 +78,7 @@ const SearchBar = () => {
 
         <div className="p-2">
             <button
+              id="homesearch"
                onClick={handleSearch}
               className="bg-pink-600  p-2 text-white rounded-full shadow-sm hover:bg-pink-700"
             >
