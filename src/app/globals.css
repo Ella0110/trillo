@@ -30,6 +30,16 @@ body {
     animation: pulsate 1s infinite;
   }
 
+  .slider-custom::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px; /* 滑块的宽度 */
+    height: 12px; /* 滑块的高度 */
+    background: #db2777; /* 滑块的颜色（例如蓝色） */
+    border-radius: 50%; /* 滑块为圆形 */
+    cursor: pointer;
+  }
+
 @keyframes pulsate {
   0% {
       transform: scale(1);

@@ -1,83 +1,110 @@
-import Image from "next/image";
-import nextConfig from "../../../next.config.mjs";
-import Notification from "../components/notification";
+"use client"
 
-export default function Header() {
+import React, { useEffect } from "react"
+import AuthModel from "../components/authmodel/authmodel"
+import nextConfig from "../../../next.config.mjs"
+import Image from "next/image"
+import Link from "next/link";
+import { useState } from "react"
+import { signOut, getCurrentUser, fetchAuthSession } from "@aws-amplify/auth"
+import { useRouter } from 'next/navigation'
+
+export default function Header({children}) {
+  const [showModal, setShowModal] = useState(false)
+  const [authStates, setAuthStates] = useState("")
+  const [isSignin, setIsSignin] = useState(false)
+  const router = useRouter()
+
+  useEffect(() => {
+    async function getUserState(){
+    try{
+      await fetchAuthSession({ forceRefresh: true });
+      // const start = Date.now()
+      const { signInDetails, username, userId } = await getCurrentUser()
+      // console.log(Date.now() - start)
+      console.log(signInDetails, username, userId )
+
+      setIsSignin(!!userId)
+    }  catch (error) {
+      
+      console.log("error signing out: ", error)
+    }}
+    getUserState()
+  }, [])
+
+  async function handleSignOut() {
+    try {
+      setAuthStates('')
+      await signOut({ global: true })
+      console.log("退出登录")
+      setIsSignin(false)
+      router.push('/')
+    } catch (error) {
+      console.log("error signing out: ", error)
+    }
+  }
+
   return (
-    <div>
-    <header class="text-sm h-20 bg-white border-b-[1px] border-solid border-gray-100 flex justify-between items-center">
-      <Image
-        src={`${nextConfig.basePath}/img/logo.png`}
-        alt="Logo"
-        width={50}
-        height={50}
-        className="ml-5"
-      ></Image>
-      <form action="#" className="hidden md:block basis-2/5 flex justify-center items-center">
-        <input
-          type="text"
-          placeholder="Search hotels"
-          className="text-sm bg-gray-100 text-gray-600 rounded-full 
-                border-none py-1.5 px-5 w-[90%] transition-all duration-[30] -mr-8 focus:w-full focus:bg-gray-[150] focus:outline-none
-                 placeholder:font-thin placeholder:text-gray-300"
-        />
-        <button className="bg-gray-100 active:translate-y-[2px]">
-          <svg className="h-5 w-5 fill-gray-400">
-            <use
-              xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-magnifying-glass`}
-            ></use>
-          </svg>
-        </button>
-      </form>
+    <>
+      <header className="text-sm h-14 px-10 bg-white border-gray-200 border-b-[1px] flex justify-between items-center">
+      <Link href="/">
+        <Image
+          src={`${nextConfig.basePath}/img/logo.png`}
+          alt="Logo"
+          width={50}
+          height={50}
+          className=""
+        ></Image>
+     </Link>
+        <div
+          className="flex  items-center  p-6 lg:px-8"
+          aria-label="Global"
+        >
+          
+          {children}
+          {!isSignin ? (
+            <div className="lg:flex absolute right-0  p-4 lg:justify-end">
+              <button
+                className="text-xs font-semibold  bg-pink-600 rounded-full py-1 px-3 text-white hover:bg-pink-700"
+                onClick={() => {
+                  setShowModal(true)
+                  setAuthStates("login")
+                }}
+              >
+                Log in{" "}
+              </button>
+              <button
+                className="text-xs pl-2 font-semibold rounded-full py-2 px-4 text-zinc-800"
+                onClick={() => {
+                  setShowModal(true)
+                  setAuthStates("signup")
+                }}
+              >
+                Sign Up{" "}
+              </button>
 
-      <nav className="flex items-center cursor-pointer self-stretch">
-        <Notification Number="7">
-          <svg className="h-5 w-5 fill-gray-500">
-            <use
-              xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-bookmark`}
-            ></use>
-          </svg>
-        </Notification>
-
-        <Notification Number="13">
-          <svg className="h-5 w-5 fill-gray-500">
-            <use
-              xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-chat`}
-            ></use>
-          </svg>
-        </Notification>
-
-        <div className="px-5 flex items-center h-full hover:bg-gray-200">
-          <Image
-            src={`${nextConfig.basePath}/img/image.png`}
-            alt="User photo"
-            height={30}
-            width={30}
-            className="rounded-[100%] mr-2"
-          />
-          <span className="text-gray-600">Ada</span>
+              <AuthModel
+                showModal={showModal}
+                setShowModal={setShowModal}
+                authStates={authStates}
+                setAuthStates={setAuthStates}
+                setIsSignin={setIsSignin}
+              />
+            </div>
+          ) : (
+            <div className="lg:flex absolute right-0 p-4 lg:justify-end">
+            <button
+              className="text-xs lg:justify-end font-semibold  bg-gray-800 rounded-full py-2 px-4 text-white hover:bg-black"
+              onClick={() => {
+                handleSignOut()
+              }}
+            >
+              Sign out{" "}
+            </button>
+            </div>
+          )}
         </div>
-      </nav>
-    </header>
-
-
-    <form action="#" className="md:hidden basis-2/5 flex justify-center items-center">
-    <input
-      type="text"
-      placeholder="Search hotels"
-      className="text-sm bg-gray-100 text-gray-600 
-            border-none py-1.5 px-5 transition-all duration-[30] -mr-5 w-full focus:bg-gray-[150] focus:outline-none
-             placeholder:font-thin placeholder:text-gray-300"
-    />
-    <button className="bg-gray-100">
-      <svg className="h-5 w-5 fill-gray-400">
-        <use
-          xlinkHref={`${nextConfig.basePath}/img/sprite.svg#icon-magnifying-glass`}
-        ></use>
-      </svg>
-    </button>
-  </form>
-  </div>
-
-  );
+      </header>
+    </>
+  )
 }

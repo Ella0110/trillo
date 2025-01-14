@@ -2,13 +2,13 @@ import Image from "next/image"
 
 export default function ReviewBox({reviewText, reviewPhoto, reviewName, reviewDate, reviewRate}) {
     return(
-        <figure className="bg-white shadow-lg p-8 mb-9 relative overflow-hidden">
-        <blockquote className="mb-5 z-10 relative">
+        <figure className="flex gap-5 flex-col justify-between flex-none w-[18rem] bg-white shadow-lg p-5">
+        <blockquote className="text-wrap">
             {reviewText}
         </blockquote>
         <figcaption className="flex items-center">
             <Image src={reviewPhoto} alt="User 1" width={200} height={200} className="h-11 w-11 rounded-full mr-4" />
-            <div className="mr-auto">
+            <div className="mr-4">
                 <p className="text-xs uppercase font-semibold mb-[4px]">{reviewName}</p>
                 <p className="text-[10px]">{reviewDate}</p>
             </div>
