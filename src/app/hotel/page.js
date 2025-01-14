@@ -22,7 +22,7 @@ export default function Hotel() {
   const id = searchParams.get('id')
   console.log(id)
 
-  const { data:hotel, error, isLoading } = useSWR(`http://localhost:5260/api/hotels/${id}`, fetcher)
+  const { data:hotel, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/hotels/${id}`, fetcher)
   // console.log(JSON.stringify(hotel, null, 2)); 
 
   if (error) return <div>failed to load: {error.message}</div>

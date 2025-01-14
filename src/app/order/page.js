@@ -39,7 +39,7 @@ export default function Order() {
   const formatCheckOut = formattedDate.format(datecheckOut)
   const formatCancelDate = formattedDate.format(cancelDate)
 
-  const { data:hotel, error, isLoading } = useSWR(`http://localhost:5260/api/hotels/${id}`, fetcher)
+  const { data:hotel, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/hotels/${id}`, fetcher)
 
   if (error) return <div>failed to load: {error.message}</div>
   if (isLoading) 

@@ -21,7 +21,7 @@ export default function Booking() {
   const checkOut = searchParams.get('checkOut')
   const guests = searchParams.get('guests')
 
-  const { data: hotels, error, isLoading } = useSWR(`http://localhost:5260/api/hotels/search?address=${location}`, fetcher)
+  const { data: hotels, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/hotels/search?address=${location}`, fetcher)
   // const [searchQuery, setSearchQuery] = useState('')
 
   // console.log(JSON.stringify(data, null, 2)); 

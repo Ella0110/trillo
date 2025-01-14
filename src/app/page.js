@@ -16,7 +16,10 @@ const fetcher = async (url) => {
 
 export default function Home() {
 
-  const { data: hotels, error, isLoading } = useSWR('http://localhost:5260/api/hotels/', fetcher)
+  const url1 = "test: "+process.env.NEXT_PUBLIC_API_URL
+  console.log(url1)
+
+  const { data: hotels, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL+"/api/hotels/", fetcher)
   const [searchQuery, setSearchQuery] = useState('')
 
   // console.log(JSON.stringify(data, null, 2)); 
