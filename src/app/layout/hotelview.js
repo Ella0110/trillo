@@ -101,7 +101,7 @@ export default function HotelView({hotel}) {
                             <ReviewBox
                                 key={i}
                                 reviewText = {review.body}  
-                                reviewPhoto = {`${nextConfig.basePath}/img/user-1.jpg`}
+                                reviewPhoto = {`${nextConfig.basePath}/img/user-${i+1}.jpg`}
                                 reviewName = "Nick Smith"
                                 reviewDate = "Feb 23rd, 2017"
                                 reviewRate = {review.rating}  

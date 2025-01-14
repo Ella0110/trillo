@@ -30,7 +30,7 @@ export default function HomeContent({hotels}) {
               key={i}
               name={`hotel${i}`}
               cardSize="12rem"
-              cardPhoto={hotel.gallery?.[0]}
+              cardPhoto={hotel.gallery?.[1]}
               // cardPhoto={`${nextConfig.basePath}/img/hotel-1.jpg`}
               cardAddress={hotel.address}
               cardRate={hotel.totalRating}
