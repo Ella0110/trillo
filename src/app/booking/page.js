@@ -46,7 +46,9 @@ function BookingContent() {
 }
 
 export default function Booking() {
-  <Suspense fallback={<div>Loading...</div>}>
-    <BookingContent />
-  </Suspense>
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingContent />
+    </Suspense>
+  )
 }
