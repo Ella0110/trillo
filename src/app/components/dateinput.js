@@ -1,6 +1,7 @@
-export default function DateInput({value, minDate, onChange}) {
+export default function DateInput({id="", value, minDate, onChange}) {
   return (
     <input
+      id={id}
       type="date"
       className="w-full bg-transparent text-gray-700 focus:outline-none"
       value={value}
