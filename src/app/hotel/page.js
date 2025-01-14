@@ -7,6 +7,7 @@ import Sidebar from "@/app/layout/sidebar";
 import HotelView from "../layout/hotelview";
 import useSWR from "swr";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 
 const fetcher = async (url) => {
   const response = await fetch(url)
@@ -16,7 +17,7 @@ const fetcher = async (url) => {
   return response.json()
 }
 
-export default function Hotel() {
+function HotelContent() {
 
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
@@ -33,12 +34,18 @@ export default function Hotel() {
       </div>
 
   return (
-    <div className="">
+    <>
         <Header />
         <div className="flex flex-col lg:flex-row max-w-full">
           <Sidebar />
           <HotelView hotel={hotel}/>
         </div>
-    </div>
+     </>
   );
+}
+
+export default function Order() {
+  <Suspense fallback={<div>Loading...</div>}>
+    <HotelContent />
+  </Suspense>
 }
