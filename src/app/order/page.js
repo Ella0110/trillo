@@ -180,8 +180,10 @@ function OrderContent() {
 }
 
 export default function Order() {
-  <Suspense fallback={<div>Loading...</div>}>
-    <OrderContent />
-  </Suspense>
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OrderContent />
+    </Suspense>
+  )
 }
 

@@ -44,8 +44,10 @@ function HotelContent() {
   );
 }
 
-export default function Order() {
-  <Suspense fallback={<div>Loading...</div>}>
-    <HotelContent />
-  </Suspense>
+export default function Hotel() {
+  return (
+    <Suspense fallback={<div style={{ color: "red" }}>Loading fallback...</div>}>
+      <HotelContent />
+    </Suspense>
+  )
 }
