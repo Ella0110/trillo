@@ -4,6 +4,7 @@ import useSWR from "swr";
 import LeftPanel from "../layout/bookleftpanel";
 import RightPanel from "../layout/bookrightpanel";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 
 const fetcher = async (url) => {
   const response = await fetch(url)
@@ -13,7 +14,7 @@ const fetcher = async (url) => {
   return response.json()
 }
 
-export default function Booking() {
+function BookingContent() {
   const searchParams = useSearchParams()
 
   const location = searchParams.get('location')
@@ -34,12 +35,18 @@ export default function Booking() {
       </div>
 
   return (
-    <div>
+    <>
       <Header />
       <div className="flex w-full min-h-[75rem] bg-white dark:bg-zinc-800">
         <LeftPanel />
         <RightPanel hotels={hotels}/>
       </div>
-    </div>
+    </>
   );
+}
+
+export default function Booking() {
+  <Suspense fallback={<div>Loading...</div>}>
+    <BookingContent />
+  </Suspense>
 }

@@ -5,6 +5,7 @@ import Image from "next/image";
 import useSWR from "swr";
 import nextConfig from "../../../next.config.mjs";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 import PricePanel from "../components/pricepanel";
 
 const fetcher = async (url) => {
@@ -15,7 +16,7 @@ const fetcher = async (url) => {
   return response.json()
 }
 
-export default function Order() {
+function OrderContent() {
 
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
@@ -177,3 +178,10 @@ export default function Order() {
     </>
   );
 }
+
+export default function Order() {
+  <Suspense fallback={<div>Loading...</div>}>
+    <OrderContent />
+  </Suspense>
+}
+
