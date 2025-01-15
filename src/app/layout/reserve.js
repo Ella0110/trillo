@@ -2,6 +2,7 @@ import { useState } from "react";
 import nextConfig from "../../../next.config";
 import DateInput from "../components/dateinput";
 import PricePanel from "../components/pricepanel";
+import Link from "next/link";
 
 export default function Reserve({ hotel }) {
   var date = new Date();
@@ -65,12 +66,12 @@ export default function Reserve({ hotel }) {
           />
         </div>
       </div>
-      <a
+      <Link
         href={`/order?${queryString}`}
         className="flex items-center justify-center rounded-lg h-10 text-white bg-pink-600"
       >
         Reserve
-      </a>
+      </Link>
       <div className="flex items-center justify-center text-xs text-gray-500">
         You won&apos;t be charged yet
       </div>
