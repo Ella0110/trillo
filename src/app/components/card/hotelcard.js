@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HeartLikeCheckBox from "../checkbox/heartlikecheckbox";
-import nextConfig from "../../../../next.config.mjs";
+import nextConfig from "../../../../next.config";
 import ControllerPoint from "../controllerpoint";
 
 export default function HotelCard({

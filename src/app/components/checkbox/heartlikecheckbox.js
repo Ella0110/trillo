@@ -1,4 +1,4 @@
-import nextConfig from "../../../../next.config.mjs";
+import nextConfig from "../../../../next.config";
 
 export default function HeartLikeCheckBox({
   id, 
