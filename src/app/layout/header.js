@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react"
 import AuthModel from "../components/authmodel/authmodel"
-import nextConfig from "../../../next.config.mjs"
+import nextConfig from "../../../next.config"
 import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react"

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import nextConfig from "../../../next.config.mjs";
+import nextConfig from "../../../next.config";
 import DateInput from "../components/dateinput";
 import PricePanel from "../components/pricepanel";
 
