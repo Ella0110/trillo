@@ -3,7 +3,7 @@
 import Header from "../layout/header";
 import Image from "next/image";
 import useSWR from "swr";
-import nextConfig from "../../../next.config.mjs";
+import nextConfig from "../../../next.config";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from 'react'
 import PricePanel from "../components/pricepanel";

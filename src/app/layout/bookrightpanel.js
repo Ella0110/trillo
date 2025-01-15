@@ -1,6 +1,6 @@
 import ButtonGroup from "../components/pilltable";
 import HotelCard from "../components/card/hotelcard";
-import nextConfig from "../../../next.config.mjs";
+import nextConfig from "../../../next.config";
 
 export default function RightPanel({hotels}) {
   return (

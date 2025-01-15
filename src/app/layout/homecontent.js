@@ -1,5 +1,5 @@
 import HotelCard from "../components/card/hotelcard";
-import nextConfig from "../../../next.config.mjs";
+import nextConfig from "../../../next.config";
 import Image from "next/image";
 import PlaceCard from "../components/card/placecard";
 
