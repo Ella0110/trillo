@@ -1,10 +1,12 @@
 # Trillo
 
-A modern, responsive travel booking website built using **Next.js**, **React**, and **Tailwind CSS**. This project is a refactor of the original design from the "Advanced CSS and Sass" course.
+> A modern, responsive travel booking website built using **Next.js**, **React**, and **Tailwind CSS**. This project is a refactor of the original design from the "Advanced CSS and Sass" course.
 
-## Demo
+## Preview
 
 Check out the live demo of the Trillo website [here](https://ella0110.github.io/trillo/).
+
+![Preview](./public/img/Trillo.gif)
 
 ## Features
 
